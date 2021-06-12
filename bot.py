@@ -219,6 +219,16 @@ async def on_message(msg):
        if num == 69420:
          await msg.reply('https://cdn.discordapp.com/attachments/759882556744663040/822255453677289482/SPOILER_unknown.png')
          print('racismo')
+    m = msg.content.lower()
+    if (m.startswith('[') and msg.channel.name=='❓│1º_ano') or (m.startswith('[') and msg.channel.name=='❓│2º_ano') or (m.startswith('[') and msg.channel.name=='❓│3º-ano') or (m.startswith('[') and msg.channel.name=='❔│duvidas'):
+        vitrine = client.get_channel(853354421165228052)
+        cores = [0x38d42a, 0x1fd1e1, 0x1dda8b, 0x2f55d8, 0xe191e3, 0x6919e7, 0xc949a6]
+        duvida = discord.Embed(title=msg.channel.name , description='**' + msg.content+'** \n[Vê aqui]('+ msg.jump_url + ') <a:leftarrow15:853378234405486593> <a:leftarrow15:853378234405486593>', color=random.choice(cores))
+        if msg.attachments:
+            image = msg.attachments[0].url
+            duvida.set_image(url=image)
+        duvida.set_footer(icon_url=msg.author.avatar_url, text=f"Copia a pergunta para a barra de pesquisas para ver se já tem resposta! ")
+        await vitrine.send(embed=duvida)
     await client.process_commands(msg)
     
 @client.command(help='AWOOOOOOOOOOOO AND THE CUM WONT STOP')
